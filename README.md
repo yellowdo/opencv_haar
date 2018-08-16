@@ -1,7 +1,7 @@
 # 빠른 얼굴 검출을 위한 **IDEA** 3가지
 
 ---
-##1. Integral Image
+## 1. Integral Image
 
 - 이미지의 밝기차이를 지속적으로 계산하기엔 시간이 많이 걸린다.
 
@@ -32,7 +32,7 @@ void integralImage(Mat &src, Mat &intg) {
 }
 ```
 
-##2. Haar-like Feature
+## 2. Haar-like Feature
 
 - 검정영역의 밝기와 흰 영역의 밝기 차이에서 임계값 이상은 것을 찾는것 
 
@@ -64,7 +64,7 @@ int haarLikeValue(Mat &intg, int col, int row, int width, int height) {
 >![ ](/image/intg.jpg)
 
 
-##3. LBP , MCT
+## 3. LBP , MCT
 -  LBP (Local Binary Pattern)
 	- 이미지의 Texture(질감)표현 및 얼굴 인식 등에 활용
 	영상의 밝기 변화에 강인한 특징을 가짐
@@ -190,7 +190,7 @@ static void invariant_rotaion_lbp(int *lbp, int size_lbp, float *hist) {
 > ![ ](/image/compare.jpg)
 
 
-##4. Cascade Adaboost##
+## 4. Cascade Adaboost
 
 - Boosting
 	반복 학습 방법
