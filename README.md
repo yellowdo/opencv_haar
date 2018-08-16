@@ -58,13 +58,11 @@ int haarLikeValue(Mat &intg, int col, int row, int width, int height) {
 ```
 
 - 예제 실행 결과
-
 [01_haar_ex.cpp](https://github.com/yellowdo/opencv_haar/blob/master/01_haar_ex.cpp "01_haar_ex.cpp")
-
 >![ ](/image/intg.jpg)
 
 
-## 3. LBP , MCT
+## 3. LBP
 -  LBP (Local Binary Pattern)
 	- 이미지의 Texture(질감)표현 및 얼굴 인식 등에 활용
 	영상의 밝기 변화에 강인한 특징을 가짐
