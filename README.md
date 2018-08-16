@@ -1,7 +1,7 @@
 # 빠른 얼굴 검출을 위한 **IDEA** 3가지
 
 ---
-##1. Integral Image##
+##1. Integral Image
 
 - 이미지의 밝기차이를 지속적으로 계산하기엔 시간이 많이 걸린다.
 
@@ -10,8 +10,7 @@
 >  ![ ](/image/intgral.jpg)
 
 - 이미지 Mat 객체를 받아 Integral Image 객체 생성
-
-> ```c++
+```c
 void integralImage(Mat &src, Mat &intg) {
     int calcVal = 0;
     intg = Mat::zeros(src.rows + 1, src.cols + 1, CV_32SC1);
@@ -33,9 +32,7 @@ void integralImage(Mat &src, Mat &intg) {
 }
 ```
 
-
-
-##2. Haar-like Feature##
+##2. Haar-like Feature
 
 - 검정영역의 밝기와 흰 영역의 밝기 차이에서 임계값 이상은 것을 찾는것 
 
@@ -43,7 +40,7 @@ void integralImage(Mat &src, Mat &intg) {
  
 -  Mat 객체와 밝기 지정 범위를 받아 밝기 차이 값을 반환
 
-> ```c++
+```c
  int getIntegralSum(Mat &intg, int col, int row, int width, int height) {
     int* val = intg.ptr<int>(0);
     int step = (int)intg.step1();
@@ -52,7 +49,7 @@ void integralImage(Mat &src, Mat &intg) {
 }
 ```
 
->```c++
+```c
 int haarLikeValue(Mat &intg, int col, int row, int width, int height) {
     if ((width % 2) != 0) return 0;
     return getIntegralSum(intg, col, row, col + (width / 2), row + height) -
@@ -67,7 +64,7 @@ int haarLikeValue(Mat &intg, int col, int row, int width, int height) {
 >![ ](/image/intg.jpg)
 
 
-##3. LBP , MCT##
+##3. LBP , MCT
 -  LBP (Local Binary Pattern)
 	- 이미지의 Texture(질감)표현 및 얼굴 인식 등에 활용
 	영상의 밝기 변화에 강인한 특징을 가짐
@@ -78,7 +75,7 @@ int haarLikeValue(Mat &intg, int col, int row, int width, int height) {
 	이웃하는 픽셀 값이 중심 값보다 크면 1, 작으면 0으로 셋팅
 	순서대로 나열 => 모든 픽셀에 대하여 적용 후 히스토그램(픽셀 값의 히스토그램이 아니라 LBP 값들의 히스토그램을 만드는 것: 하나의 영상의 질감을 __256__개의 숫자로 표현)
 
->```c++
+```c
 #define COMP_TH(X, COMP, VAL) (X >= COMP ? VAL : 0)
 class Parallel_LBP : public ParallelLoopBody {
 private:
@@ -110,7 +107,7 @@ public:
 
  - 예제 실행 결과
 [02_LbpMct_ex.cpp](https://github.com/yellowdo/opencv_haar/blob/master/02_LbpMct_ex.cpp "02_LbpMct_ex.cpp")
-> ![ ](/image/haar_feature.jpg)
+> ![ ](/image/LBP.jpg)
 
 - Uniform LBP
 	- 어떤 패턴들은 좀 더 영상 내에서 자주 발견되는 반면 어떤 패턴들은 드물게 발견되므로 특성의 개수를 줄일 수 있는 방법이 제안 
@@ -124,7 +121,7 @@ public:
 > ![ ](/image/riLBP.jpg)
 	- 256 Bin => 59 Bin (Uniform LBP) => __10__ Bin
 
->```c++
+```c
 static void invariant_rotaion_lbp(int *lbp, int size_lbp, float *hist) {
     static const int lookup[7][8] = {
         { 1, 2, 4, 8, 16, 32, 64, 128 },
