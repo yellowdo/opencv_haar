@@ -1,4 +1,4 @@
-# 빠른 얼굴 검출을 위한 **IDEA** 3가지
+# Face Detection  (P. Viola & M. Jones)
 
 ---
 ## 1. Integral Image
